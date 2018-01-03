@@ -21,6 +21,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $response["error"] = FALSE;
         $response["user"]["uid"] = $user["id"];
         $response["user"]["username"] = $user["username"];
+		$response["user"]["status"] = $user["status"];
         echo json_encode($response);
     } else {
         // user is not found with the credentials

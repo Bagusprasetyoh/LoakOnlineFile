@@ -1,4 +1,4 @@
 <?php
-	$tgl=date('ym');
+	$tgl=date('Y-m-d');
 	echo $tgl;
 ?>

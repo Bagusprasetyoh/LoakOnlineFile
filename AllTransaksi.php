@@ -5,17 +5,14 @@ require_once 'include/connect.php';
 // json response array
 $response = array("error" => FALSE);
 
-if(isset($_POST['id_pengepul']) && isset($_POST['id_penjual'])){
-	$id_penjual = $_POST['id_penjual'];
+if(isset($_POST['id_pengepul'])){
 	$id_pengepul = $_POST['id_pengepul'];
-	$sql = mysql_query("UPDATE FROM transaksi SET id_pengepul = '$id_pengepul' WHERE id_penjual='$id_penjual' and status!='selesai'");
+	$sql = "SELECT * FROM transaksi, penjual WHERE id_pengepul='$id_pengepul' and status!='selesai'";
 	$result = mysql_query($sql);
-	$data = mysql_fetch_assoc($result);
 	
 	while($data=mysql_fetch_assoc($result)){
-		$response["jadwal"][] = $data;
+		$response["transaksi"][] = $data;
 	}
-	
 }else{
 	$response = array("error" => TRUE);
 }
